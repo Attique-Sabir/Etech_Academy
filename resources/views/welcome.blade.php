@@ -61,6 +61,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+         
+            .card img {
+              width: 1800px;
+              height: 200px;
+            }
+       
         </style>
     </head>
     <body>
@@ -123,21 +129,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="{{'images/Etech.jpg'}}" alt="First slide">
+      <img class="d-block w-100 h-50" src="{{'images/etech.jpg'}}" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
     <h5>Learn</h5>
     <p>All Kinf of Learning</p>
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="{{'images/Etech Academy.jpg'}}" alt="Second slide">
+      <img class="d-block w-100 h-25" src="{{'images/etech2.png'}}" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
     <h5>Learn</h5>
     <p>All Kinf of Learning</p>
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="{{'images/Etech Academy2.jpg'}}" alt="Third slide">
+      <img class="d-block w-100 h-25" src="{{'images/etech3.png'}}" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
     <h5>Learn</h5>
     <p>All Kinf of Learning</p>
@@ -154,35 +160,66 @@
   </a>
 </div>
 <h1 class="text-white text-center bg-dark">We Provide All Kind of Courses</h1>
-<table class="table">
+
+<div class="container-fluid d-flex">
+<div class="row">
+  @foreach ($all_courses as $course)
+
+  <div class="col-3">
+
+    <div class="container-fluid d-flex p-3 justify-content-center flex-wrap border border-primary" id="card">
+      <div class="card-deck h-100">
+        <div class="card">
+          <img class="card-img-top img-thumbnail"src="{{asset('images/'.$course->course_image)}}"   alt="Card image cap">
+          <div class="card-body bg-light ">
+            <h5 class="card-title ">{{$course->course_name}}</h5>
+            <div class="img bg-light">
+              <div class="row">
+                <div class="col">
+           <img src="{{asset('images/'.$course->course_image)}}" class="rounded-circle" style="width:30%;height:110%" alt="Card image cap">
+                </div>
+                <div class="col">
+            <h6 class="card-text d-flex text-primary justify-content-center">Fee:{{$course->course_fee}}</h6>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{-- <img class=" thumbnail d-flex flex-wrap "style="image:width:200px;height:108px;" src="{{asset('images/'.$course->course_image)}}" >
+    <h4>{{$course->course_name}}</h4>
+    <p>{{$course->course_duration}}</p>
+    <p>{{$course->course_fee}}</p> --}}
+
+  </div>
+@endforeach
+
+</div>
+
+</div>
+{{-- <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">iamge</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Course Duration</th>
+      <th scope="col">Course Fee</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+          
+    <th scope="row"><img class=" thumbnail"style="image:width:100px;height:48px;" src="{{asset('images/'.$course->course_image)}}" ></th>
+      <td>{{$course->course_name}}</td>
+      <td>{{$course->course_duration}}</td>
+      <td>{{$course->course_fee}}</td>
+
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
+    
   </tbody>
-</table>
+</table> --}}
     </body>
 </html>
